@@ -6,12 +6,16 @@ public class Geometria_Mateo {
     float total;
     float lados;
     float lado2;
+    float largo;
     Scanner entrada = new Scanner(System.in);
     //Constructor
     public Geometria_Mateo(){
         base = 0;
         altura = 0;
         total = 0;
+        lados = 0;
+        lado2 = 0;
+        largo = 0;
     }
     //Menu de opciones
     int menu(){
@@ -39,7 +43,7 @@ public class Geometria_Mateo {
             }
         }
         return op;
-    }//Fin del menu
+    }//Fin del menu de opciones
     //Menu para escoger las figuras
     int menu_figuras(){
         int op = -1;
@@ -66,6 +70,7 @@ public class Geometria_Mateo {
         }
         return op;
     }//Fin del menu_figuras
+    //Menu para escoger el tipo de triangulo
     int menu_triangulos(){
         int op = -1;
         while ((op < 5) || (op > 7)) {
@@ -91,6 +96,34 @@ public class Geometria_Mateo {
         }
         return op;
     }//Fin del menu_triangulos
+
+    //Menu para escoger de que figura se quiere sacar el volumen
+    int menu_volumenes(){
+        int op = -1;
+        while ((op < 5) || (op > 7)) {
+            System.out.println("--------------------------------");
+            System.out.println("| ESCOJA UNA FIGURA GEOMETRICA |");
+            System.out.println("--------------------------------");
+            System.out.println("---------------------------------------------");
+            System.out.println("|     5.- Cubo                              |");
+            System.out.println("|                                           |");
+            System.out.println("|     6.- Prisma triangular                 |");
+            System.out.println("|                                           |");
+            System.out.println("|     7.- Piramide                          |");
+            System.out.println("|                                           |");
+            System.out.println("---------------------------------------------");
+            System.out.print("Ingrese la opcion que desea ejecutar: ");
+            op = entrada.nextInt();
+
+            if((op < 5) || (op > 7)){
+                System.out.println("--------------------");
+                System.out.println("| Opcion no valida |");
+                System.out.println("--------------------");
+            }
+        }
+        return op;
+    }//Fin del menu_figuras
+
     //Metodos
     // Areas de las figuras geometricas
     public void cuadrado_areas(Geometria_Mateo datos1){
@@ -163,8 +196,42 @@ public class Geometria_Mateo {
         System.out.println("El perimetro del regtangulo es: " +  total);
     }
     //Volumen de las figuras geometricas
-
+    public void cubo_volumen(Geometria_Mateo datos7){
+        System.out.println("Ingrese la dimencion de los lados del cubo:");
+        datos7.setLados(entrada.nextFloat());
+        total = getLados() * getLados() * getLados();
+        System.out.println("El volumen del cubo es de: " + total);
+    }
+    public void triangulo_volumen(Geometria_Mateo datos8){
+        System.out.println("Ingrese la base: ");
+        datos8.setBase(entrada.nextFloat());
+        System.out.println("Ingrese la altura: ");
+        datos8.setAltura(entrada.nextFloat());
+        System.out.println("Ingrese el largo: ");
+        datos8.setLargo(entrada.nextFloat());
+        total = (getBase() * getAltura()) / 2 ; //Estos sacando el área
+        total *= getLargo(); //Multiplico el área por el largo y la almaceno en la misma variable
+        System.out.println("El volumen del prisma triangular es: " + total);
+    }
+    public void piramide_volumen(Geometria_Mateo datos9){
+        System.out.println("Ingrese la altura: ");
+        datos9.setAltura(entrada.nextFloat());
+        System.out.println("Ingrese el lado: ");
+        datos9.setLados(entrada.nextFloat());
+        total = (((getLados() * getLados()) * getAltura()) / 3);
+        //Estoy claculando el area base de la piramide multiplicando los dos lados
+         //Luego utilizo la fromula para sacar el volumen de una piramide
+        System.out.println("El volumen de la piramide es: " + total);
+    }
     //SETTER AND GETTER
+
+    public float getLargo() {
+        return largo;
+    }
+
+    public void setLargo(float largo) {
+        this.largo = largo;
+    }
 
     public float getLado2() {
         return lado2;

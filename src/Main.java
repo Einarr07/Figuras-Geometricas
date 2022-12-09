@@ -13,7 +13,7 @@ public class Main {
     //
     while(!salir){
         switch (menu_de_opciones.menu()){
-            case 1:
+            case 1: //Caso para calcular las areas de las figuras
                 op_figuras = menu_de_figuras.menu_figuras();
                 if (op_figuras == 1){
                     fig_cuadrado.cuadrado_areas(fig_cuadrado);
@@ -25,17 +25,17 @@ public class Main {
                     fig_regtangulo.rectangulo_area(fig_regtangulo);
                 }
                 break;
-            case 2:
+            case 2: //Caso para calcular los perimetros de las figuras
                 op_figuras = menu_de_figuras.menu_figuras();
                 if (op_figuras == 1){
                     fig_cuadrado.cuadrado_perimetro(fig_cuadrado);
                 }
                 if (op_figuras == 2){
                     op_figuras = menu_de_figuras.menu_triangulos();
-                    if (op_figuras ==5 ){
+                    if (op_figuras == 5 ){
                     fig_triangulo.triangulo_perimetro_equi(fig_triangulo);
                     }
-                    else if (op_figuras ==6) {
+                    else if (op_figuras == 6) {
                     fig_triangulo.triangulo_perimetro_iso(fig_triangulo);
                     }
                     else if (op_figuras == 7){
@@ -46,8 +46,17 @@ public class Main {
                     fig_regtangulo.rectangulo_perimetro(fig_regtangulo);
                 }
                 break;
-            case 3:
-
+            case 3: //Caso para calcular los volumenes de las figuras
+                op_figuras = menu_de_figuras.menu_volumenes();
+                if (op_figuras == 5){
+                    fig_cuadrado.cubo_volumen(fig_cuadrado);
+                }
+                if (op_figuras == 6){
+                    fig_triangulo.triangulo_volumen(fig_triangulo);
+                }
+                if (op_figuras == 7){
+                    fig_regtangulo.piramide_volumen(fig_regtangulo);
+                }
                 break;
             case 4:
                 salir = true;
@@ -57,8 +66,7 @@ public class Main {
                 System.out.println("| OPCION NO VALIDA|");
                 System.out.println("-------------------");
 
-    }
-
+        }//Fin switch
     }//Fin del bucle
         System.out.println("-------------------------");
         System.out.println("| GRACIAS, VUELVA PRONTO |");
